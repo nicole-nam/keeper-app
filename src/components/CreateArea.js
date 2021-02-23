@@ -19,6 +19,10 @@ function CreateArea(props) {
 
   function handleClick(e) {
     props.onAdd(note);
+    setNote({
+      title: "",
+      content: "",
+    });
     e.preventDefault();
   }
 
@@ -27,12 +31,14 @@ function CreateArea(props) {
       <form>
         <input
           onChange={handleChange}
+          autoComplete="off"
           name="title"
           placeholder="Title"
           value={note.title}
         />
         <textarea
           onChange={handleChange}
+          autoComplete="off"
           name="content"
           placeholder="Take a note..."
           rows="3"
