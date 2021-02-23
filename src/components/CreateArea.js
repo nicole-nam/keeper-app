@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
-function CreateArea() {
+function CreateArea(props) {
   const [note, setNote] = useState({
     title: "",
-    note: "",
+    content: "",
   });
 
   function handleChange(e) {
@@ -15,6 +15,11 @@ function CreateArea() {
         [name]: value,
       };
     });
+  }
+
+  function handleClick(e) {
+    props.onAdd(note);
+    e.preventDefault();
   }
 
   return (
@@ -33,7 +38,7 @@ function CreateArea() {
           rows="3"
           value={note.content}
         />
-        <button>Add</button>
+        <button onClick={handleClick}>Add</button>
       </form>
     </div>
   );
