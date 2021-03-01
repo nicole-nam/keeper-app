@@ -40,14 +40,16 @@ function CreateArea(props) {
   return (
     <div>
       <form className="create-note">
-        <input
-          onChange={handleChange}
-          autoComplete="off"
-          name="title"
-          placeholder="Title"
-          value={note.title}
-          style={{ display: load ? "block" : "none" }}
-        />
+        {load && (
+          <input
+            onChange={handleChange}
+            autoComplete="off"
+            name="title"
+            placeholder="Title"
+            value={note.title}
+          />
+        )}
+
         <textarea
           onChange={handleChange}
           onFocus={handleFocus}
