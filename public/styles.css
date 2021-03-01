@@ -8,6 +8,7 @@ html {
 }
 body {
   background: #eee;
+  background-image: url(./cubes.png);
   padding: 0 16px;
 }
 
