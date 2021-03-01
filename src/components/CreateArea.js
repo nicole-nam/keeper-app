@@ -1,11 +1,16 @@
 import React, { useState } from "react";
-import AddIcon from '@material-ui/icons/Add';
+import AddIcon from "@material-ui/icons/Add";
+import Fab from "@material-ui/core/Fab";
+import Zoom from "@material-ui/core/Zoom";
 
 function CreateArea(props) {
   const [note, setNote] = useState({
     title: "",
     content: "",
   });
+
+  const [load, setLoad] = useState(false);
+  console.log(load);
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -27,27 +32,39 @@ function CreateArea(props) {
     e.preventDefault();
   }
 
+  function handleFocus() {
+    console.log("cursor detected");
+    setLoad(true);
+  }
+
   return (
     <div>
-      <form>
+      <form className="create-note">
         <input
           onChange={handleChange}
           autoComplete="off"
           name="title"
           placeholder="Title"
           value={note.title}
+          style={{ display: load ? "block" : "none" }}
         />
         <textarea
           onChange={handleChange}
+          onFocus={handleFocus}
           autoComplete="off"
           name="content"
           placeholder="Take a note..."
-          rows="3"
+          rows={load ? "3" : "1"}
           value={note.content}
         />
-        <button onClick={handleClick}>
-          <AddIcon />
-        </button>
+        <Zoom in={load}>
+          <Fab
+            onClick={handleClick}
+            style={{ display: load ? "block" : "none" }}
+          >
+            <AddIcon />
+          </Fab>
+        </Zoom>
       </form>
     </div>
   );
