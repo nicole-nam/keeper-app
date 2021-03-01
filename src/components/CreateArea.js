@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import AddIcon from '@material-ui/icons/Add';
 
 function CreateArea(props) {
   const [note, setNote] = useState({
@@ -44,7 +45,9 @@ function CreateArea(props) {
           rows="3"
           value={note.content}
         />
-        <button onClick={handleClick}>Add</button>
+        <button onClick={handleClick}>
+          <AddIcon />
+        </button>
       </form>
     </div>
   );
