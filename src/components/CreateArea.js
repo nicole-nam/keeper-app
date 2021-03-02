@@ -10,7 +10,6 @@ function CreateArea(props) {
   });
 
   const [load, setLoad] = useState(false);
-  console.log(load);
 
   function handleChange(e) {
     const { name, value } = e.target;
