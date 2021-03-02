@@ -33,13 +33,12 @@ function CreateArea(props) {
   }
 
   function handleFocus() {
-    console.log("cursor detected");
     setLoad(true);
   }
 
   return (
     <div>
-      <form className="create-note">
+      <form className="create-note" onSubmit={handleClick}>
         {load && (
           <input
             onChange={handleChange}
@@ -49,7 +48,7 @@ function CreateArea(props) {
             value={note.title}
           />
         )}
-
+        <input type="submit" style={{ display: "none" }}></input>
         <textarea
           onChange={handleChange}
           onFocus={handleFocus}
@@ -59,6 +58,7 @@ function CreateArea(props) {
           rows={load ? "3" : "1"}
           value={note.content}
         />
+
         <Zoom in={load}>
           <Fab
             onClick={handleClick}
